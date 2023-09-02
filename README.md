@@ -22,7 +22,7 @@
   - *signup* folder is the app for Signup page.
   - *posts* folder is the app for posts pages. Posts details, Posts Lists, Posts Update and Delete Pages with be set under this folder.
 
-### For the html files, check the templates folder under each App folder and for the images places in the Static folder static/images.
+### For the html files, check the templates folder under each App folder and for the images places in the Static folder --> static/images.
 
 
 
