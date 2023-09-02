@@ -1,0 +1,3 @@
+socket/node_modules/*
+myvirtual/*
+__pycache__/
