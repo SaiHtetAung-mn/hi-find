@@ -1,0 +1,14 @@
+<div class="popup-container" id="chat-popup">
+    <div class="right-align-popup">
+        <div class="chat-popup">
+            <div class="chat-popup-header">
+                <h2>Chat Box</h2>
+                <span id="close-chat" style="cursor: pointer;">X</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#close-chat").on('click', () => $("#chat-popup").css('display', 'none'));
+</script>
