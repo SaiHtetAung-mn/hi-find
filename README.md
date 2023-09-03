@@ -15,7 +15,8 @@
   - `python manage.py runserver`
 
   - ### Setup & Run Socket Server
-    - `cd socket`
+    - Open new terminal window
+    - Change dir to socket folder `cd socket`
     - `npm i`
     - `npm start`
 
