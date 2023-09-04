@@ -98,7 +98,6 @@ DATABASES = {
     }
 }
 
-<<<<<<< HEAD
 # SQLLite
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -108,19 +107,6 @@ DATABASES = {
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-=======
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'lost_and_found',
-#         'USER': 'root',
-#         'PASSWORD': '',
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306'
-#     }
-# }
-
->>>>>>> 706935d7a36c9bff2b4149596055c60a23edaf44
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
