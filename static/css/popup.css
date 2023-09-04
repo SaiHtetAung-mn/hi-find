@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.popup-container {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.right-align-popup {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    backdrop-filter: blur(2px);
+}
+
+.chat-popup {
+    width: 400px;
+    height: 60%;
+    margin: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+}
+
+.chat-popup-header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: blue;
+}

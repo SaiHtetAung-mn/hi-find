@@ -14,6 +14,12 @@
   - Run the following command to start the server
   - `python manage.py runserver`
 
+  - ### Setup & Run Socket Server
+    - Open new terminal window
+    - Change dir to socket folder `cd socket`
+    - `npm i`
+    - `npm start`
+
 
 ## Project folder Info
   - *hi-find* folder is the main project file for the whole project. Need to configure settings.py and urls.py in this folder.

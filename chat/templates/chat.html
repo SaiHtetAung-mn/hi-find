@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="{% static 'css/popup.css' %}">
+
+    <!-- Java Scripts Library -->
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="{% static 'scripts/jquery.min.js' %}"></script>
+</head>
+<body>
+    {% include "popup.html" %}
+    <button id="chat-trigger">chat popup</button>
+
+    <!-- User scripts -->
+    <script src="{% static 'scripts/socket.js' %}"></script>
+    <script>
+        $("#chat-trigger").on('click', () => {
+            document.getElementById('chat-popup').style.display = "block"
+        })
+    </script>
+</body>
