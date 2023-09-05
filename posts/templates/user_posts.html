@@ -1,0 +1,338 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Your Posts</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .hero {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #E8E8E8;
+            color: #525252;
+        }
+
+        nav {
+            background-color: transparent;
+            width: 100%;
+            padding: 10px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .logo {
+            width: 400px;  
+        }
+        .logo a{
+            text-decoration: none;
+            font-family:'Bebas Neue'; 
+            font-size: 40px;
+            color: #1F1342;
+        }
+
+        h2 {
+            color: #1F1342;
+        }
+        .create-post{
+            margin-left: 332px;
+
+        }
+
+        .create-post button {
+            background-color: #1F1342;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .create-post button a{
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 10px;
+        }
+
+        .create-post #create-icon {
+            width: 20px; /* Adjust the width as needed */
+            height: 20px;
+            margin-top: 7px; /* Adjust the height as needed */
+            margin-right: 10px;
+            color: #fff;
+            /* Adjust the margin as needed */
+        }
+
+        .chat-icon
+        {
+            font-size: 30px;
+            margin-left: 30px;
+            color: #1F1342;
+        }
+
+        .user-pic {
+            width: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 30px;
+        }
+        .sub-menu-wrap {
+            position: absolute;
+            top: 70%;
+            right: 9%;
+            width: 200px;
+            max-height: 0px;
+            overflow: hidden;
+            transition: max-height 0.5s;
+
+        }
+
+        .sub-menu-wrap.open-menu {
+            max-height: 300px;
+        }
+
+        .sub-menu {
+            background-color: #1F1342;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 25px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info h3 {
+            color: #E8E8E8;
+        }
+
+        .user-info img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .sub-menu hr {
+            border: 0;
+            height: 1px;
+            width: 100%;
+            background-color: #ccc;
+            margin: 15px 0 10px;
+        }
+
+        .sub-menu-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #525252;
+            margin: 12px 0;
+        }
+
+        .sub-menu-link p {
+            width: 100%;
+            color: #E8E8E8;
+        }
+
+        .sub-menu-link img {
+            width: 30px;
+            background-color: #e5e5e5;
+            border-radius: 50%;
+            padding: 8px;
+            margin-right: 15px;
+        }
+
+        .sub-menu-link span {
+            font-size: 15px;
+            transition: transform 0.5s;
+            color: #E8E8E8;
+        }
+
+        .sub-menu-link:hover span {
+            transform: translate(5px);
+        }
+
+        .sub-menu-link:hover p {
+            font-weight: 600;
+        }
+
+        .profiles {
+            display: flex;
+            flex-wrap: wrap; /* Allow profiles to wrap to the next line */
+            justify-content: center; /* Center profiles horizontally */
+            margin-top: 40px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        .profile-card {
+            width: 250px;
+            height: 350px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin: 10px; /* Add margin to separate profile cards */
+        }
+
+        .profile-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-name {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 30px;
+            width: 100%;
+        }
+
+        .profile-time {
+            font-size: 12px;
+            color: #777;
+            margin-top: 10px;
+            margin-right: 115px;
+        }
+
+        .additional-image {
+            width: 200px;
+            height: 130px;
+            margin-top: 10px;
+            padding: 0;
+            border-radius: 20px;
+        }
+
+        .list {
+            list-style-type: none;
+            margin-top: 10px;
+            padding-left: 0;
+            margin-right: 25px;
+        }
+
+        .list-item {
+            margin-bottom: 5px;
+        }
+        .details{
+            display: flex;
+        }
+        .details-button1{
+            background-color: #1F1342;
+            border: none;
+            color: #fff;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100px;
+            padding: 10px 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        .details-button1 a{
+            text-decoration: none;
+            color: #fff;
+             font-size: 14px;
+
+        }
+        .details-button2{
+            background-color: transparent;
+            border: none;
+            border:1px solid #1F1342;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100px;
+            padding: 10px 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        .details-button2 a{
+            text-decoration: none;
+            color: #1F1342;
+             font-size: 14px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="hero">
+    <nav>
+        <h2 class="logo"><i class="fa-solid fa-arrow-left" style="font-size: 30px;"></i> <a href="{% url 'Lost Post Overall' %}">Your Posts</a></h2>
+        <div class="create-post">
+            <button><a href="#">
+                Create a Post</a>
+                <i class="fa-regular fa-pen-to-square" id="create-icon"></i>
+            </button>
+        </div>
+        <div class="chat-icon">
+            <i class="fa-solid fa-comment-dots"></i>
+        </div>
+
+        <img src="{% static 'images/user.png'%}" class="user-pic">
+     <!--   <div class="sub-menu-wrap" id="subMenu">
+            <div class="sub-menu">
+                <div class="user-info">
+                    <img src="images/user.png">
+                    <h3>James</h3>
+                </div>
+                <hr>
+                <a href="#" class="sub-menu-link">
+                    <img src="images/profile.png">
+                    <p>Your Posts</p>
+                    <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                    <img src="images/chat.png">
+                    <p>Chat</p>
+                    <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                    <img src="images/logout.png">
+                    <p>Logout</p>
+                    <span>></span>
+                </a>
+            </div>
+        </div>-->
+    </nav>
+    <div class="profiles">
+        <div class="profile-card">
+                <div class="profile-name">LOST MY PHONE</div>
+                <div class="profile-time">Date: 28.8.2023</div>
+            <img src="{% static 'images/girl.jpg'%}" alt="Additional image" class="additional-image">
+            <ul class="list">
+                <li class="list-item"><b>Location: </b>UIT</li>
+                <li class="list-item"><b>Description: </b>Red Cover</li>
+            </ul>
+            <div class="details">
+            <button class="details-button1"><a href="#">EDIT</a></button>
+            <button class="details-button2"><a href="#">DELETE</a></button>
+            </div>
+        </div>      
+    </div>
+</div>
+
+</body>
+</html>

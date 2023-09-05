@@ -8,7 +8,7 @@ def get_signup(request):
     if request.method == 'POST':
         form = CustomSignupForm(request.POST)
         if form.is_valid():
-            # Create a UserProfile instance and save it
+            # Create a Users instance and save it
             user_profile = Users(
                 username=form.cleaned_data['username'],
                 email=form.cleaned_data['email'],
@@ -16,7 +16,7 @@ def get_signup(request):
                 gender=form.cleaned_data['gender']
             )
             user_profile.save()
-            return redirect('index')  # Replace 'index' with your desired success page
+            return redirect('Lost Post Overall')  # Replace 'index' with your desired success page
     else:
         form = CustomSignupForm()
     return render(request, 'signup/signup.html', {'form': form})

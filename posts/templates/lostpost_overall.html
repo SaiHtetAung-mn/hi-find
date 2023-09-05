@@ -1,0 +1,443 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Home Page</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .hero {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #E8E8E8;
+            color: #525252;
+        }
+
+        nav {
+            background-color: transparent;
+            width: 100%;
+            padding: 10px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .logo {
+            width: 120px;
+            font-family:'Bebas Neue'; 
+            font-size: 40px;
+        }
+
+        h2 {
+            color: #1F1342;
+        }
+
+        /* Style for the search bar container */
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-right: 0px;
+            margin-left: 150px; /* Adjust this for proper alignment */
+        }
+
+        /* Style for the search bar input */
+        .search-bar {
+            width: 400px;
+            padding: 10px 15px;
+            border: 2px solid #1F1342;
+            border-radius: 30px;
+            font-size: 16px;
+            background-color: transparent;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        /* Style for the search bar input when focused */
+        .search-bar:focus {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
+
+        /* Style for the search icon */
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        /* Add a placeholder style */
+        .search-bar::placeholder {
+            color: #999;
+        }
+
+        /* Style for the search icon hover effect */
+        .search-icon:hover {
+            transform: scale(1.20);
+        }
+
+        .search-icon img {
+            width: 24px; /* Adjust the width as needed */
+            height: 24px; /* Adjust the height as needed */
+            display: block; /* Ensures the image is displayed as a block element */
+            margin: 0 auto; /* Centers the image horizontally within the container */
+        }
+        .create-post{
+            margin-left: 50px;
+
+        }
+
+        .create-post button {
+            background-color: #1F1342;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .create-post button a{
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 10px;
+        }
+
+        .create-post #create-icon {
+            width: 20px; /* Adjust the width as needed */
+            height: 20px;
+            margin-top: 7px; /* Adjust the height as needed */
+            margin-right: 10px;
+            color: #fff;
+            /* Adjust the margin as needed */
+        }
+
+        .chat-icon
+        {
+            font-size: 30px;
+            margin-left: 30px;
+            color: #1F1342;
+        }
+        .user-pic {
+            width: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 30px;
+        }
+        .sub-menu-wrap {
+            position: absolute;
+            top: 70%;
+            right: 9%;
+            width: 200px;
+            max-height: 0px;
+            overflow: hidden;
+            transition: max-height 0.5s;
+
+        }
+
+        .sub-menu-wrap.open-menu {
+            max-height: 300px;
+        }
+
+        .sub-menu {
+            background-color: #1F1342;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 25px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info h3 {
+            color: #E8E8E8;
+        }
+
+        .user-info img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .sub-menu hr {
+            border: 0;
+            height: 1px;
+            width: 100%;
+            background-color: #ccc;
+            margin: 15px 0 10px;
+        }
+
+        .sub-menu-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #525252;
+            margin: 12px 0;
+        }
+
+        .sub-menu-link p {
+            width: 100%;
+            color: #E8E8E8;
+        }
+
+        .sub-menu-link img {
+            width: 30px;
+            background-color: #e5e5e5;
+            border-radius: 50%;
+            padding: 8px;
+            margin-right: 15px;
+        }
+
+        .sub-menu-link span {
+            font-size: 15px;
+            transition: transform 0.5s;
+            color: #E8E8E8;
+        }
+
+        .sub-menu-link:hover span {
+            transform: translate(5px);
+        }
+
+        .sub-menu-link:hover p {
+            font-weight: 600;
+        }
+
+        .profiles {
+            display: flex;
+            flex-wrap: wrap; /* Allow profiles to wrap to the next line */
+            justify-content: center; /* Center profiles horizontally */
+            margin-top: 40px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        .profile-card {
+            width: 250px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin: 10px; /* Add margin to separate profile cards */
+        }
+
+        .profile-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .profile-details {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-right: 5px;
+            width: 100px;
+        }
+
+        .profile-time {
+            font-size: 12px;
+            color: #777;
+            margin-left: 20px;
+        }
+
+        .additional-image {
+            width: 200px;
+            height: 130px;
+            margin-top: 10px;
+            padding: 0;
+            border-radius: 20px;
+        }
+
+        .list {
+            list-style-type: none;
+            margin-top: 10px;
+            padding-left: 0;
+        }
+
+        .list-item {
+            margin-bottom: 5px;
+        }
+
+        .details-button {
+            background-color: #1F1342;
+            border: none;
+            color: #fff;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+            padding: 10px 20px;
+        }
+        .details-button a{
+            text-decoration: none;
+            color: #fff;
+             font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="hero">
+    <nav>
+        <h2 class="logo">HI-FIND</h2>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Type item keyword...">
+            <div class="search-icon">
+                <img src="{% static 'images/search.png'%}" alt="Search">
+            </div>
+        </div>
+        <div class="create-post">
+            <button><a href="{% url 'Create Post' %}">
+                Create a Post</a>
+                <i class="fa-regular fa-pen-to-square" id="create-icon"></i>
+            </button>
+        </div>
+        <div class="chat-icon">
+            <i class="fa-solid fa-comment-dots"></i>
+        </div>
+        <img src="{% static 'images/user.png'%}" class="user-pic" onclick="toggleMenu()">
+        <div class="sub-menu-wrap" id="subMenu">
+            <div class="sub-menu">
+                <div class="user-info">
+                    <img src="{% static 'images/user.png'%}">
+                    <h3>James</h3>
+                </div>
+                <hr>
+                <a href="{% url 'User Posts' %}" class="sub-menu-link">
+                    <img src="{% static 'images/profile.png'%}">
+                    <p>Your Posts</p>
+                    
+                </a>
+                <a href="#" class="sub-menu-link">
+                    <img src="{% static 'images/chat.png'%}">
+                    <p>Chat</p>
+                    
+                </a>
+                <a href="{% url 'index' %}" class="sub-menu-link">
+                    <img src="{% static 'images/logout.png'%}">
+                    <p>Logout</p>
+            
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="profiles">
+        <div class="profile-card">
+            <div class="profile-details">
+                <img src="{% static 'images/user.png'%}" alt="User Profile Photo" class="profile-photo">
+                <div class="profile-name">John</div>
+                <div class="profile-time">1 min ago</div>
+            </div>
+            <img src="{% static 'images/girl.jpg'%}" alt="Additional image" class="additional-image">
+            <ul class="list">
+                <li class="list-item"><b>Post title: </b>Lost my phone</li>
+                <li class="list-item"><b>Item: </b>vivo</li>
+                <li class="list-item"><b>Location: </b>UIT</li>
+            </ul>
+            <a href="{% url 'Lost Post Detail' %}"><button class="details-button">Detail</button></a>
+        </div>
+    <!--    <div class="profile-card">
+            <div class="profile-details">
+                <img src="images/user.png" alt="User Profile Photo" class="profile-photo">
+                <div class="profile-name">John</div>
+                <div class="profile-time">1 min ago</div>
+            </div>
+            <img src="images/girl.jpg" alt="Additional image" class="additional-image">
+            <ul class="list">
+                <li class="list-item"><b>Post title: </b>Lost my phone</li>
+                <li class="list-item"><b>Item: </b>vivo</li>
+                <li class="list-item"><b>Location: </b>UIT</li>
+            </ul>
+            <button class="details-button"><a href="#">Detail</a></button>
+        </div>
+        <div class="profile-card">
+            <div class="profile-details">
+                <img src="images/user.png" alt="User Profile Photo" class="profile-photo">
+                <div class="profile-name">John</div>
+                <div class="profile-time">1 min ago</div>
+            </div>
+            <img src="images/girl.jpg" alt="Additional image" class="additional-image">
+            <ul class="list">
+                <li class="list-item"><b>Post title: </b>Lost my phone</li>
+                <li class="list-item"><b>Item: </b>vivo</li>
+                <li class="list-item"><b>Location: </b>UIT</li>
+            </ul>
+            <button class="details-button"><a href="#">Detail</a></button>
+        </div>
+        <div class="profile-card">
+            <div class="profile-details">
+                <img src="images/user.png" alt="User Profile Photo" class="profile-photo">
+                <div class="profile-name">John</div>
+                <div class="profile-time">1 min ago</div>
+            </div>
+            <img src="images/girl.jpg" alt="Additional image" class="additional-image">
+            <ul class="list">
+                <li class="list-item"><b>Post title: </b>Lost my phone</li>
+                <li class="list-item"><b>Item: </b>vivo</li>
+                <li class="list-item"><b>Location: </b>UIT</li>
+            </ul>
+            <button class="details-button"><a href="#">Detail</a></button>
+        </div>
+        <div class="profile-card">
+            <div class="profile-details">
+                <img src="images/user.png" alt="User Profile Photo" class="profile-photo">
+                <div class="profile-name">John</div>
+                <div class="profile-time">1 min ago</div>
+            </div>
+            <img src="images/girl.jpg" alt="Additional image" class="additional-image">
+            <ul class="list">
+                <li class="list-item"><b>Post title: </b>Lost my phone</li>
+                <li class="list-item"><b>Item: </b>vivo</li>
+                <li class="list-item"><b>Location: </b>UIT</li>
+            </ul>
+            <button class="details-button"><a href="#">Detail</a></button>
+        </div>
+        <div class="profile-card">
+            <div class="profile-details">
+                <img src="images/user.png" alt="User Profile Photo" class="profile-photo">
+                <div class="profile-name">John</div>
+                <div class="profile-time">1 min ago</div>
+            </div>
+            <img src="images/girl.jpg" alt="Additional image" class="additional-image">
+            <ul class="list">
+                <li class="list-item"><b>Post title: </b>Lost my phone</li>
+                <li class="list-item"><b>Item: </b>vivo</li>
+                <li class="list-item"><b>Location: </b>UIT</li>
+            </ul>
+            <button class="details-button"><a href="#">Detail</a></button>
+        </div>-->
+    </div>
+
+</div>
+<script type="text/javascript">
+    let subMenu = document.getElementById("subMenu");
+
+    function toggleMenu() {
+        subMenu.classList.toggle("open-menu");
+    }
+</script>
+
+</body>
+</html>
