@@ -10,15 +10,20 @@
   - After that, exist from that folderInstall the required libraries with the following commands
   - `cd ..`
   - `pip install -r requirements.txt`
+  ### Set up database
+  - Create database named `lost_portal` at your MySql Database
+  - And configure the username and password of MySql at hi_find\settings.py file
 
   - Run the following command to start the server
+  - `python manage.py makemigrations`
+  - `python manage.py migrate`
   - `python manage.py runserver`
 
-  - ### Setup & Run Socket Server
-    - Open new terminal window
-    - Change dir to socket folder `cd socket`
-    - `npm i`
-    - `npm start`
+### Setup & Run Socket Server
+  - Open new terminal window
+  - Change dir to socket folder `cd socket`
+  - `npm i`
+  - `npm start`
 
 
 ## Project folder Info
@@ -30,7 +35,8 @@
 
 ### For the html files, check the templates folder under each App folder and for the images places in the Static folder --> static/images.
 
-
+## Created Database Info
+  - `Users (username,email,password,gender)`
 
 
 
