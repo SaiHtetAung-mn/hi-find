@@ -1,5 +1,5 @@
 import { showIncomingMessage } from './chat/chat.js';
-const SOCKET_URL = 'http://52.65.64.46:3000';
+const SOCKET_URL = 'http://localhost:3000';
 
 const socket = io.connect(SOCKET_URL);
 
