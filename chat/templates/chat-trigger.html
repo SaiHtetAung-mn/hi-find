@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/chat-list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/conversation.css' %}">
+
+    <!-- Java Scripts Library -->
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="{% static 'scripts/jquery.min.js' %}"></script>
+</head>
+<body>
+    {% include "chat-list.html" %}
+    {% include "conversation.html" %}
+
+    <ul style="margin-top: 20px">
+        {% for user in users %}
+            <span>{{user.name}}: {{user.id}}</span><br>
+        {% endfor %}
+    </ul>
+
+
+    <input type="text" placeholder="Your Id" style="margin: 20px" id="user-id"/>
+    <button id="submit">Submit</button>
+    <br/>
+    <button id="chat-trigger" style="margin: 20px;" disabled>chat</button>
+
+    <!-- User scripts -->
+    <script src="{% static 'scripts/socket.js' %}"></script>
+    <script src="{% static 'scripts/chat/index.js' %}" type="module"></script>
+    <script type="module">
+        import { renderChatList, openChatList } from "{% static 'scripts/chat/chat.js' %}";
+        import { register } from "{% static 'scripts/socket.js' %}";
+
+        $("#submit").on('click', () => {
+            const userId = Number($("#user-id").val());
+            if(!Number.isInteger(userId)) return;
+
+            register(userId);
+            $("#chat-trigger").prop("disabled", false);
+        })
+
+        $("#chat-trigger").on('click', async () => {
+            await renderChatList();
+            openChatList();
+        });
+    </script>
+</body>

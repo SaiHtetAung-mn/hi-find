@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = `${process.env['HI_FIND_API_URL']}/api/chat`;
 
 module.exports = axios.default.create({ 
     baseURL: BASE_URL, 

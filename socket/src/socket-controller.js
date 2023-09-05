@@ -33,13 +33,13 @@ exports.handleSocketEvent = (io) => {
         const { sender_id, receiver_id, message } = data;
 
         // Request to store message
-        await ApiRequest.post('/message/send', {
+        await ApiRequest.post('/messages/send', {
             sender_id,
             receiver_id,
             message
         });
         
         // Send to receiver 
-        notifyUser(receiver_id, socketEvent.RECEIVE_MESSAGE, { message: message });
+        notifyUser(receiver_id, socketEvent.RECEIVE_MESSAGE, { message: message, sender_id });
     }
 }
