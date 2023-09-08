@@ -36,7 +36,7 @@
 ### For the html files, check the templates folder under each App folder and for the images places in the Static folder --> static/images.
 
 ## Created Database Info
-  - `Users (username,email,password,gender)`
+  - `lostUsers (user_id,username,email,password,gender,create_at)`
 
 
 
