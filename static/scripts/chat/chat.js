@@ -61,7 +61,7 @@ export async function renderChatList() {
                 <div class="details">
                     <div class="listHead">
                         <h4>${l.name}</h4>
-                        <p class="time">12:34</p>
+                        <p class="time">${moment(l.updated_at).format("ddd, hA")}</p>
                     </div>
                     <div class="message_p">
                         <p>${l.message}</p>
