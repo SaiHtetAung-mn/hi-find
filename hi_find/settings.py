@@ -80,13 +80,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'hi_find.wsgi.application'
-
+AUTH_USER_MODEL = 'signup.lostUsers'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-# MySQL Database
+# # MySQL Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -99,7 +99,7 @@ DATABASES = {
 }
 
 # SQLLite
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+#https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # DATABASES = {
 #     'default': {

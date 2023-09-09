@@ -39,6 +39,7 @@
             text-align: center;
             padding: 20px;
             border-radius: 8px;
+            width: 40%;
         }
 
         .login-title {
@@ -47,7 +48,7 @@
             font-weight: bold;
         }
 
-        input {
+        .inputS {
             width: 80%;
             padding: 10px;
             font-size: 16px;
@@ -59,7 +60,7 @@
             transition: border-bottom 0.3s ease, transform 0.3s ease;
         }
 
-        input:focus {
+        .inputS:focus {
             transform: scale(1.02); /* Add a subtle scale effect on focus */
         }
 
@@ -107,11 +108,19 @@
 
     <div class="login-container">
         <div class="login-title">Login to your account</div>
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <div class="login-button-container">
-            <button class="login-button">Login</button>
-        </div>
+        <form method="post">
+             {% csrf_token %}
+             <div class="form-group">
+            {{ form.username }}
+            </div>
+        
+            <div class="form-group">
+                {{ form.password }}
+            </div>
+            <div class="login-button-container">
+                <button class="login-button">Login</button>
+            </div>
+        </form>
         <p class="signup-link">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
     </div>
 </body>
