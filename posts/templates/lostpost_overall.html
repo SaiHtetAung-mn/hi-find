@@ -1,34 +1,45 @@
 {% extends 'base.html' %}
 
 {% load static %}
-   
+{% load humanize %}
+{% load custom_filters %}
 {% block content %}
         <div id="search-container">
-            <input type="text" id="search-bar" placeholder="Type item keyword...">
-            <div id="search-icon">
-                <img src="{% static 'images/search.png'%}" alt="Search">
-            </div>
+            <form action="{% url 'Lost Post Overall' %}" method="get">
+            <input type="text" id="search-bar" name="q" placeholder="Type item keyword...">
+           
+            <button type="submit" id="search-icon"><img src="{% static 'images/search.png'%}" alt="Search"></button>
+            
+            
+            </form>
         </div>
       
     <div class="profiles">
+        {% if lost_items %}
+        {% for lost_item in lost_items %}
         <div class="profile-card">
             <div class="profile-details">
                 <img src="{% static 'images/user.png'%}" alt="User Profile Photo" class="profile-photo">
-                <div class="profile-name">John</div>
-                <div class="profile-time">1 min ago</div>
+                <div class="profile-name">{{ lost_item.user.username }}</div>
+                <div class="profile-time">{{ lost_item.timestamp|custom_naturaltime }}</div>
             </div>
-            <img src="{% static 'images/girl.jpg'%}" alt="Additional image" class="additional-image">
+            <img src="{{ lost_item.fileUpload.url }}" alt="Lost Item Image" class="additional-image">
             <ul class="list">
-                <li class="list-item"><b>Post title: </b>Lost my phone</li>
-                <li class="list-item"><b>Item: </b>vivo</li>
-                <li class="list-item"><b>Location: </b>UIT</li>
+                <li class="list-item"><b>Post title: </b>{{ lost_item.postTitle }}</li>
+                <li class="list-item"><b>Item: </b>{{ lost_item.lostItem }}</li>
+                <li class="list-item"><b>Location: </b>{{ lost_item.location }}</li>
             </ul>
-            <a href="{% url 'Lost Post Detail' %}"><button class="details-button">Detail</button></a>
+            <!-- post_id=lost_item.post_id  -->
+            <div id="detailBtndiv">
+            <a href="{% url 'Lost Post Detail' post_id=lost_item.post_id %}"><button class="details-button">Detail</button></a>
+            </div>
         </div>
-    
+        {% endfor %}
+        {% else %}
+        <img src="{% static 'images/404.svg'%}" alt="error" id="error">
+        {% endif %}
     </div>
 
-</div>
 
 
 {% endblock %}

@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-<div onload="form1.reset();" style="background-image: url('{% static "images/report_bg.svg" %}'); background-size:cover; background-repeat:no-repeat; padding: 20px 0px 50px 0px;" >
+<div style="background-image: url('{% static "images/report_bg.svg" %}'); background-size:cover; background-repeat:no-repeat; padding: 20px 0px 50px 0px;" >
        
   <div class="col mt-4" >
   <div class="container  " style="width: 620px;" >
@@ -13,49 +13,60 @@
       
       
       <!-- MAIN -->
-          <form class="row  needs-validation" novalidate action="" id="form1">
+          <form class="row  needs-validation"  method="post" enctype="multipart/form-data">
+            {% csrf_token %}
               <div class="card-body p-4"  style="line-height: 16px;">
               
-                  <!-- <label for="validationCustom03" class="form-label">Status</label> -->
-      <span style="font-size: 14px;">Title</span>     <input type="text" class="form-control form-control-sm" id="status"  required>
-      <div class="invalid-feedback align-bottom  ">
-        Please fill status.
-      </div>   
-                <br>
-
-                <span style="font-size: 14px;">Item</span>        <input type="text" class="form-control form-control-sm" id="status"  required>
-                  <div class="invalid-feedback">
-                    Please fill item.
-                  </div>
-                <br>
-
-
-                <span style="font-size: 14px;">Location</span>        <input type="text" class="form-control form-control-sm" id="status"  required>
-                  <div class="invalid-feedback mt-1 ">
-                    Please fill location.
-                  </div>
-                <br>
-
-                <span style="font-size: 14px;">Description</span>    <textarea class="form-control " id="description" style="resize: none;height: 100px;" rows="3"></textarea>
-                  
-                <br>
-
-                <div class="file-loading">
-                  <input id="input-image" name="input-image" type="file" accept="image/*" class="form-control"  required>
-                  <div class="invalid-feedback mt-1 ">
-                    Please upload an image.
-                  </div>
-              </div><br><br>
-
-
-                
-                <a href="{% url 'Lost Post Overall' %}" style="margin-left: 390px;color: #1F1342;font-size: 22px; font-family: 'Bebas Neue';text-decoration: none;" >Cancel </a>
-                  &nbsp;&nbsp;&nbsp;  <button style="background-color: #1F1342;color: #ffffff;font-size: 22px;border-radius: 2rem;width:100px;height: 34px; font-family: 'Bebas Neue';" type="submit"  >Submit </button> 
-              
-                  
-                
+              <!-- <label for="validationCustom03" class="form-label">Status</label> -->
+              <span style="font-size: 14px;">Title</span>     
+              <div class="form-group">
+              {{ form.postTitle }}
               </div>
-            </form>
+              <div class="invalid-feedback align-bottom  ">
+              Please fill status.
+             </div>   
+              <br>
+
+              <span style="font-size: 14px;">Item</span>        
+              <div class="form-group">
+              {{ form.lostItem }}
+              </div>
+              <div class="invalid-feedback">
+                    Please fill item.
+              </div>
+              <br>
+
+              <span style="font-size: 14px;">Location</span>        
+               <div class="form-group">
+              {{ form.location }}
+              </div>
+              <div class="invalid-feedback mt-1 ">
+                    Please fill location.
+              </div>
+              <br>
+
+              <span style="font-size: 14px;">Description</span>    
+              <div class="form-group">
+              {{ form.description }}
+              </div>
+              <br>
+
+              <div class="file-loading">
+              <div class="form-group">
+              {{ form.fileUpload }}
+              </div>
+              <div class="invalid-feedback mt-1 ">
+                    Please upload an image.
+              </div>
+              </div>
+              <br><br>
+
+              <a href="{% url 'Lost Post Overall' %}" style="margin-left: 390px;color: #1F1342;font-size: 22px; font-family: 'Bebas Neue';text-decoration: none;" >Cancel </a>
+              &nbsp;&nbsp;&nbsp;  
+              <button style="background-color: #1F1342;color: #ffffff;font-size: 22px;border-radius: 2rem;width:100px;height: 34px; font-family: 'Bebas Neue';" type="submit"  >Submit </button> 
+                 
+              </div>
+          </form>
     
         </div>
 
@@ -63,33 +74,41 @@
 
   </div>
    
-
 </div>
 
 <script>
 
-//  for disabling form submissions if there are invalid fields
-    (function () {
-      'use strict'
+// //  for disabling form submissions if there are invalid fields
+//     (function () {
+//       'use strict'
     
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.querySelectorAll('.needs-validation')
+//       // Fetch all the forms we want to apply custom Bootstrap validation styles to
+//       var forms = document.querySelectorAll('.needs-validation')
     
-      // Loop over them and prevent submission
-      Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-          form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
-            }
+//       // Loop over them and prevent submission
+//       Array.prototype.slice.call(forms)
+//         .forEach(function (form) {
+//           form.addEventListener('submit', function (event) {
+//             if (!form.checkValidity()) {
+//               event.preventDefault()
+//               event.stopPropagation()
+//             }
     
-            form.classList.add('was-validated')
-          }, false)
-        })
-    })()</script>
+//             form.classList.add('was-validated')
+//           }, false)
+//         })
+//     })()</script>
 
  {% endblock %}
 
     
-   
+{% if form.errors %}
+<ul class="errorlist">
+    {% for field in form %}
+    {% for error in field.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+    {% endfor %}
+</ul>
+{% endif %}
+  

@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import CustomLoginForm
-from signup.models import lostUsers
+from signup.models import lostUser
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate, login, logout
 

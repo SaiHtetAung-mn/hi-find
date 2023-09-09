@@ -34,7 +34,7 @@
         nav {
             background-color: transparent;
             width: 100%;
-            padding: 50px 10%;
+            padding: 30px 10% 50px 10%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -95,8 +95,8 @@
         }
         .sub-menu-wrap {
             position: absolute;
-            top: 70%;
-            right: 9%;
+            top: 60%;
+            right: 1%;
             width: 200px;
             max-height: 0px;
             overflow: hidden;
@@ -174,26 +174,26 @@
         }
 
         .profiles {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                margin: 50px 120px 100px;
-                flex-direction: column;
-                row-gap: 50px;
-                column-gap: 30px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    margin: 50px 120px 100px;
+                    flex-direction: row;
+                    row-gap: 50px;
+                    column-gap: 30px;
         }
 
         .profile-card {
-            width: 250px;
+            width: 260px;
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 10px;
+            padding: 15px;
             text-align: left;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             flex-direction: column;
-            margin: 10px; /* Add margin to separate profile cards */
+            
         }
 
         .profile-photo {
@@ -223,11 +223,12 @@
         }
 
         .additional-image {
-            width: 200px;
-            height: 130px;
+            width: 230px;
+            height: 150px;
             margin-top: 10px;
             padding: 0;
             border-radius: 20px;
+            object-fit: contain;
         }
 
         .list {
@@ -240,6 +241,12 @@
             margin-bottom: 5px;
         }
 
+        #detailBtndiv{         
+        width: 220px;
+        display: flex;
+        justify-content: center;
+        }
+
         .details-button {
             background-color: #1F1342;
             border: none;
@@ -247,8 +254,9 @@
             border-radius: 30px;
             cursor: pointer;
             width: 100%;
-            padding: 10px 20px;
+            padding: 10px 30px;
         }
+
         .details-button a{
             text-decoration: none;
             color: #fff;
@@ -266,10 +274,9 @@
 
         #rightnav{
             display: flex;
-        
             justify-content: space-between;
             align-content: center;
-            column-gap: 30px;
+            column-gap: 10px;
             flex-direction: row;
             }
 
@@ -321,9 +328,10 @@
             #search-icon {
                 position: absolute;
                 right: 510px;
-                top: 168px;
+                top: 150px;
                 color: #555;
                 cursor: pointer;
+                border-width: 0px;
             }
 
             /* Add a placeholder style */
@@ -383,6 +391,19 @@
             color: #1F1342;
              font-size: 14px;
 
+        }
+
+        i.fa-solid.fa-arrow-left {
+            margin: 0px 130px;
+        }
+
+        /* 404 image */
+        #error{
+            width: 500px;
+
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>

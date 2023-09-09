@@ -1,24 +1,35 @@
 {% extends 'base.html' %}
 
 {% load static %}
-   
+{% load humanize %}
+{% load custom_filters %}   
 {% block content %}
 
-
+    <a href="{% url 'Lost Post Overall' %}" style="color: #1F1342;"><i class="fa-solid fa-arrow-left" style="font-size: 30px;"></i></a>
     <div class="profiles">
+        {% if current_user_posts %}
+        {% for current_user_post in current_user_posts %}
         <div class="profile-card">
-                <div class="profile-name">LOST MY PHONE</div>
-                <div class="profile-time">Date: 28.8.2023</div>
-            <img src="{% static 'images/girl.jpg'%}" alt="Additional image" class="additional-image">
-            <ul class="list">
-                <li class="list-item"><b>Location: </b>UIT</li>
-                <li class="list-item"><b>Description: </b>Red Cover</li>
-            </ul>
-            <div class="details">
-            <button class="details-button1"><a href="#">EDIT</a></button>
-            <button class="details-button2"><a href="#">DELETE</a></button>
+            <div class="profile-details">
+                <img src="{% static 'images/user.png'%}" alt="User Profile Photo" class="profile-photo">
+                <div class="profile-name">{{ current_user_post.user.username }}</div>
+                <div class="profile-time">{{ current_user_post.timestamp|custom_naturaltime }}</div>
             </div>
-        </div>      
+            <img src="{{ current_user_post.fileUpload.url }}" alt="Lost Item Image" class="additional-image">
+            <ul class="list">
+                <li class="list-item"><b>Post title: </b>{{ current_user_post.postTitle }}</li>
+                <li class="list-item"><b>Item: </b>{{ current_user_post.lostItem }}</li>
+                <li class="list-item"><b>Location: </b>{{ current_user_post.location }}</li>
+            </ul>
+            <!-- post_id=lost_item.post_id  -->
+            <div id="detailBtndiv">
+            <a href="{% url 'Lost Post Detail' post_id=current_user_post.post_id %}"><button class="details-button">Detail</button></a>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <img src="{% static 'images/404.svg'%}" alt="error" id="error">
+        {% endif %}
     </div>
 
 
