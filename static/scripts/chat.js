@@ -1,5 +1,5 @@
-import ApiRequest from '../apiRequest.js';
-import { sendMessage } from '../socket.js';
+import ApiRequest from './helper/apiRequest.js';
+import { sendMessage } from './socket.js';
 
 const state = {
     currentChatMateId: null,
@@ -77,10 +77,15 @@ export async function renderChatList() {
         });
 
         listContainer.appendChild(listItem);
-    }) 
+    });
+
+    if(list.length < 1) {
+        listContainer.innerHTML = '<p style="color: white; opacity: .7; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center">No chat</p>'
+    }
 }
 
-export function openChatList() {
+export async function openChatList() {
+    await renderChatList();
     $("#chat-popup").fadeIn();
 }
 

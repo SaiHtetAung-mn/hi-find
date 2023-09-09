@@ -33,9 +33,9 @@
 
     <!-- User scripts -->
     <script src="{% static 'scripts/socket.js' %}"></script>
-    <script src="{% static 'scripts/chat/index.js' %}" type="module"></script>
+    <script src="{% static 'scripts/chat.js' %}" type="module"></script>
     <script type="module">
-        import { renderChatList, openChatList } from "{% static 'scripts/chat/chat.js' %}";
+        import { renderChatList, openChatList } from "{% static 'scripts/chat.js' %}";
         import { register } from "{% static 'scripts/socket.js' %}";
 
         $("#submit").on('click', () => {

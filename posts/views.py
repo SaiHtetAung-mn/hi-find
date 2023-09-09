@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import logging
+logger = logging.getLogger('hi_find')
 
 def createPost(request):
     return render(request,'create_post.html')

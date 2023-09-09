@@ -86,13 +86,13 @@ AUTH_USER_MODEL = 'signup.lostUsers'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-# # MySQL Database
+# MySQL Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lost_portal',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306'
     }
@@ -137,6 +137,10 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+CSRF_COOKIE_SECURE = False
+
+SESSION_COOKIE_SECURE = False
 
 
 # Static files (CSS, JavaScript, Images)
