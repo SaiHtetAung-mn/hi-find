@@ -16,7 +16,7 @@
                 <!-- CHAT LIST -->
                 <ul class="chatlist" id="chat_list">
 
-                    <li class="block ">
+                    <li class="block">
                         <div class="imgBox">
                             <img src="{% static 'images/user.jpg' %}" class="cover" alt="">
                         </div>
@@ -35,3 +35,8 @@
         </div>
     </div>
 </div>
+
+<script type="module">
+    import { closeChatList } from '{% static 'scripts/chat.js' %}';
+    $("#close-chat-list").on('click', closeChatList);
+</script>

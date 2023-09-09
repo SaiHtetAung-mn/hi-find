@@ -1,4 +1,4 @@
-import { showIncomingMessage } from './chat/chat.js';
+import { showIncomingMessage } from './chat.js';
 const SOCKET_URL = 'http://localhost:3000';
 
 const socket = io.connect(SOCKET_URL);

@@ -7,7 +7,7 @@
     position: fixed;
     width: 500px;
     right: 10px;
-    bottom: 60px;
+    top: 60px;
     background: #1f1342;
     border-radius: 10px;
     transform: scale(0.5);

@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
+import logging
+logger = logging.getLogger('hi_find')
 from .forms import CustomLostPostForm
 from posts.models import lostItems
 from django.contrib import messages

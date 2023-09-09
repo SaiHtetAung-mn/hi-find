@@ -55,5 +55,4 @@ def getChatList(request):
 @api_view(['GET'])
 def showChat(request):
     users = User.objects.all().values()
-    logger.info(users[0])
     return render(request, 'chat-trigger.html', { "users": users })

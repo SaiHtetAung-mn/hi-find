@@ -1,5 +1,5 @@
-import ApiRequest from '../apiRequest.js';
-import { sendMessage } from '../socket.js';
+import ApiRequest from './helper/apiRequest.js';
+import { sendMessage } from './socket.js';
 
 const state = {
     currentChatMateId: null,
@@ -61,7 +61,7 @@ export async function renderChatList() {
                 <div class="details">
                     <div class="listHead">
                         <h4>${l.name}</h4>
-                        <p class="time">12:34</p>
+                        <p class="time">${moment(l.updated_at).format("ddd, hA")}</p>
                     </div>
                     <div class="message_p">
                         <p>${l.message}</p>
@@ -77,10 +77,15 @@ export async function renderChatList() {
         });
 
         listContainer.appendChild(listItem);
-    }) 
+    });
+
+    if(list.length < 1) {
+        listContainer.innerHTML = '<p style="color: white; opacity: .7; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center">No chat</p>'
+    }
 }
 
-export function openChatList() {
+export async function openChatList() {
+    await renderChatList();
     $("#chat-popup").fadeIn();
 }
 
