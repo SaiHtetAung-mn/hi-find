@@ -8,51 +8,49 @@
 
     
     <!-- Detail Information -->
-    <div class="container-fluid" style="width: auto;padding:100px 33% 100px; background: white;">
+    <div style="padding:100px 0px; padding-left: 35%;background: white;">
 
-        <div class="row">
-            <!-- for post title -->
-            <div name="title" style="font-family:'Bebas Neue' ;font-size: 34px;margin: 0px 0px 5px 0px;color:#1F1342;" id="title"> {{current_post.postTitle}} <span>
+    <div style="width: 450px;display: flex;flex-direction: column;align-items: flex-start;row-gap: 10px;">
+    <div>
+        <!-- for post title -->
+        <div name="title" style="font-family:'Bebas Neue' ;font-size: 34px;color:#1F1342;" id="title"> {{current_post.postTitle}} 
 
-            <!-- for chat-icon -->
-            <button style="border: none;background-color: transparent;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <img src="{% static 'images/converation.png'%}" width="40" height="40" style="margin-left:150px;margin-top: 10px;"></button></span> 
-            </div> 
-        </div>
+        <!-- for chat-icon -->
+        <span><button style="border: none;background-color: transparent;" >
+            <img src="{% static 'images/converation.png'%}" width="40" height="40" style="margin-left: 240px;"></button></span> 
+        </div> 
+    </div>
+    <div>
     <!-- for user name -->
     <img src="{% static 'images/user.png'%}" width="26" height="26" style="border-radius: 30px;">&nbsp;&nbsp;<span style="font-family: 'Bebas Neue';font-size: 18px;margin-top: 5px;color:#1F1342;" id="username">{{current_post.user.username}}</span>
     <!-- for post created time -->
     <span class="text-muted" style="margin-left: 30px;" id="time">{{ current_post.timestamp | custom_naturaltime }}</span>
-
-    <br>
+     </div>   
+    
     <!-- for uploaded image -->
-    <img src="{{ current_post.fileUpload.url }}" id="upload_img" style="border-radius: 10px;margin-top: 20px; object-fit:contain;border: 1px solid #cab6b68f;" width="450" height="250">
-    <br>
-    <div class="row mt-4">
-        <ul style="list-style-type: none;line-height: normal; width:450px;">
-            <li class="">
-                <span style="font-family: 'Bebas Neue';font-size: 20px;color:#1F1342;">Status :</span> 
-                <span class="" style="font-size: 18px;color: #02f016;"> Active</span>
-            </li>
-            <hr style="width: 450px;">
-            <li class="">
-                <span style="font-family: 'Bebas Neue';font-size: 20px;color:#1F1342;">Location :</span> 
-                <span class="text-muted" style="font-size: 18px;"> {{current_post.location}}</span>
-            </li>
-            
-            <hr style="width: 450px;">
-            <li class="">
-                <span style="font-family: 'Bebas Neue';font-size: 20px;color:#1F1342;">Description :</span> 
-                <span class="text-muted" style="font-size: 18px;line-height:normal;text-align:justify;"> {{current_post.description}}</span>
-            </li>
-
-        </ul>
+    <img src="{{ current_post.fileUpload.url }}" id="upload_img" style="border-radius: 10px;object-fit:contain;border: 1px solid #cab6b68f;" width="450" height="250">
+    
+    <div>
+        <span style="font-family: 'Bebas Neue';font-size: 20px;color:#1F1342;">Status :</span> 
+        <span class="" style="font-size: 18px;color: #02f016;"> Active</span>
     </div>
-    <br>
+    <hr style="width: 450px;margin: 0;">
+    <div>
+        <span style="font-family: 'Bebas Neue';font-size: 20px;color:#1F1342;">Location :</span> 
+        <span class="text-muted" style="font-size: 18px;"> {{current_post.location}}</span>
+        
+    </div>
+    <hr style="width: 450px;margin: 0;">
+    <div>
+        <span style="font-family: 'Bebas Neue';font-size: 20px;color:#1F1342;">Description :</span> 
+        <span class="text-muted" style="font-size: 18px;line-height:normal;text-align:justify;"> {{current_post.description}}</span>
+    </div>
+    
     <a href="{% url 'Lost Post Overall' %}">
-    <button type="button" style="margin-left: 8px;color: #ffffff;background-color: #1F1342;width: 400px;height:40;font-family: 'Bebas Neue';border-radius: 2rem;font-size: 24px;">Back</button>
+    <button type="button" style="margin-left: 8px;color: #ffffff;background-color: #1F1342;margin-top:10px;width: 400px;height:40;font-family: 'Bebas Neue';border-radius: 2rem;font-size: 24px;">Back</button>
     </a>
 
+    </div>
     </div>
 
 {% endblock %}

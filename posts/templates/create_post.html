@@ -6,9 +6,9 @@
 <div style="background-image: url('{% static "images/report_bg.svg" %}'); background-size:cover; background-repeat:no-repeat; padding: 20px 0px 50px 0px;" >
        
   <div class="col mt-4" >
-  <div class="container  " style="width: 620px;" >
+  <div class="container  " style="width: 620px; " >
 
-          <div class="card shadow shadow-sm " style="border-radius:20px;height:auto;">
+          <div class="card shadow shadow-sm " style="border-radius:20px;height:550px;">
           <span class="" style="font-weight: bold;font-size: 29px;color: #1F1342;text-align:center;font-family: 'Bebas Neue';">Report an item</span>
       
       
@@ -18,7 +18,7 @@
               <div class="card-body p-4"  style="line-height: 16px;">
               
               <!-- <label for="validationCustom03" class="form-label">Status</label> -->
-              <span style="font-size: 14px;">Title</span>     
+              <span style="font-size: 16px; color: #1F1342; ">Title</span>     
               <div class="form-group">
               {{ form.postTitle }}
               </div>
@@ -27,7 +27,7 @@
              </div>   
               <br>
 
-              <span style="font-size: 14px;">Item</span>        
+              <span style="font-size: 16px; color: #1F1342; ">Item</span>        
               <div class="form-group">
               {{ form.lostItem }}
               </div>
@@ -36,7 +36,7 @@
               </div>
               <br>
 
-              <span style="font-size: 14px;">Location</span>        
+              <span style="font-size: 16px; color: #1F1342; ">Location</span>        
                <div class="form-group">
               {{ form.location }}
               </div>
@@ -45,7 +45,7 @@
               </div>
               <br>
 
-              <span style="font-size: 14px;">Description</span>    
+              <span style="font-size: 16px; color: #1F1342; ">Description</span>    
               <div class="form-group">
               {{ form.description }}
               </div>
@@ -61,7 +61,7 @@
               </div>
               <br><br>
 
-              <a href="{% url 'Lost Post Overall' %}" style="margin-left: 390px;color: #1F1342;font-size: 22px; font-family: 'Bebas Neue';text-decoration: none;" >Cancel </a>
+              <a href="{% url 'Lost Post Overall' %}" style="margin-left: 360px;color: #1F1342;font-size: 22px; font-family: 'Bebas Neue';text-decoration: none;" >Cancel </a>
               &nbsp;&nbsp;&nbsp;  
               <button style="background-color: #1F1342;color: #ffffff;font-size: 22px;border-radius: 2rem;width:100px;height: 34px; font-family: 'Bebas Neue';" type="submit"  >Submit </button> 
                  
@@ -100,15 +100,4 @@
 //     })()</script>
 
  {% endblock %}
-
-    
-{% if form.errors %}
-<ul class="errorlist">
-    {% for field in form %}
-    {% for error in field.errors %}
-    <li>{{ error }}</li>
-    {% endfor %}
-    {% endfor %}
-</ul>
-{% endif %}
   
