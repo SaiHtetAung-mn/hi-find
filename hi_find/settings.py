@@ -145,6 +145,8 @@ CSRF_COOKIE_SECURE = False
 
 SESSION_COOKIE_SECURE = False
 
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
