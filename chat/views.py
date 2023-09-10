@@ -34,7 +34,7 @@ def sendMessage(request):
 @api_view(['GET'])
 def getChatList(request):
     user_id = request.GET.get('user_id')
-    query = f'select u.id as mate_id, u.name, m.id, m.message, m.created_at, m.updated_at from user_user u, chat_message m where ((m.sender_id!={user_id} and m.sender_id=u.id) or (m.receiver_id!={user_id} and m.receiver_id=u.id)) and (m.sender_id={user_id} or m.receiver_id={user_id}) order by m.id desc'
+    query = f'select u.id as mate_id, u.username, m.id, m.message, m.created_at, m.updated_at from signup_lostuser u, chat_message m where ((m.sender_id!={user_id} and m.sender_id=u.id) or (m.receiver_id!={user_id} and m.receiver_id=u.id)) and (m.sender_id={user_id} or m.receiver_id={user_id}) order by m.id desc'
     cursor = connection.cursor()
     cursor.execute(query)
     columns = [col[0] for col in cursor.description]

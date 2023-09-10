@@ -68,7 +68,8 @@ def postOverall(request):
 def postDetail(request,post_id):
 
     current_post=get_object_or_404(lostItems, post_id=post_id)
-    context={'current_post':current_post}
+    post_user = lostUser.objects.filter(pk=current_post.user.pk).get()
+    context={'current_post':current_post, 'post_user': post_user}
     return render(request,'lostpost_detail.html',context)
 
 #For the current user's post

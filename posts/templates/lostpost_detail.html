@@ -16,7 +16,7 @@
         <div name="title" style="font-family:'Bebas Neue' ;font-size: 34px;color:#1F1342;" id="title"> {{current_post.postTitle}} 
 
         <!-- for chat-icon -->
-        <span><button style="border: none;background-color: transparent;" >
+        <span><button style="border: none;background-color: transparent;" id="post-detail-chat-trigger">
             <img src="{% static 'images/converation.png'%}" width="40" height="40" style="margin-left: 240px;"></button></span> 
         </div> 
     </div>
@@ -52,6 +52,18 @@
 
     </div>
     </div>
+
+    <script type="module">
+        import { openConversation } from "{% static 'scripts/chat.js' %}";
+
+        $("#post-detail-chat-trigger").on('click', async () => {
+            await openConversation("{{ post_user.pk }}", "{{ post_user.username }}")
+        });
+
+        if("{{ post_user.pk }}" == "{{ user.pk }}") {
+            $("#post-detail-chat-trigger").hide();
+        }
+    </script>
 
 {% endblock %}
 

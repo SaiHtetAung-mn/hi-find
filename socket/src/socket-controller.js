@@ -21,7 +21,7 @@ exports.handleSocketEvent = (io) => {
     
         console.log(`User connected with id: ${user_id} and socket id: ${clientSocket.id}`);
     
-        if(userSocket[user_id]) {
+        if(userSocket[user_id] && !userSocket[user_id].includes(clientSocket.id)) {
             userSocket[user_id].push(clientSocket.id);
             return;
         }

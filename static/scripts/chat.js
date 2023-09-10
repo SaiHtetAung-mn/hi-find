@@ -60,7 +60,7 @@ export async function renderChatList() {
                 </div>
                 <div class="details">
                     <div class="listHead">
-                        <h4>${l.name}</h4>
+                        <h4>${l.username}</h4>
                         <p class="time">${moment(l.updated_at).format("ddd, hA")}</p>
                     </div>
                     <div class="message_p">
@@ -71,9 +71,7 @@ export async function renderChatList() {
         `;
 
         listItem.addEventListener('click', async () => {
-            closeChatList();
-            openConversation();
-            renderConversation(l.mate_id, l.name);
+            await openConversation(l.mate_id, l.username);
         });
 
         listContainer.appendChild(listItem);
@@ -93,7 +91,9 @@ export function closeChatList() {
     $("#chat-popup").fadeOut();
 }
 
-export function openConversation() {
+export async function openConversation(mateId, mateName) {
+    closeChatList();
+    await renderConversation(mateId, mateName);
     $(".conversation").addClass("show-chatbot");
     state.isConversationOpen = true;
 }
