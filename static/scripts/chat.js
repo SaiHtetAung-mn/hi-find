@@ -7,6 +7,8 @@ const state = {
 }
 
 export async function showIncomingMessage(chatMateId, message) {
+    showChatNoti();
+    
     if(chatMateId != state.currentChatMateId || !state.isConversationOpen) {
         await renderChatList();
         return;
@@ -85,6 +87,7 @@ export async function renderChatList() {
 export async function openChatList() {
     await renderChatList();
     $("#chat-popup").fadeIn();
+    hideChatNoti();
 }
 
 export function closeChatList() {
@@ -102,6 +105,14 @@ export function closeConversation() {
     $(".conversation").removeClass("show-chatbot");
     state.currentChatMateId = null;
     state.isConversationOpen = false;
+}
+
+export function showChatNoti() {
+    $("#chat-noti").fadeIn();
+}
+
+export function hideChatNoti() {
+    $("#chat-noti").fadeOut();
 }
 
 async function getChatList() {

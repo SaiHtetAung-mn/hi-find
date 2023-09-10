@@ -91,9 +91,21 @@
             margin-left: 30px;
             color: #1F1342;
             cursor: pointer;
+            position: relative;
         }
         .chat-icon:active {
             opacity: .7;
+        }
+        .noti-badge {
+            display: none;
+            position: absolute;
+            top: 0px;
+            right: 0;
+            background-color: #dc3545;
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            color: white;
         }
         .user-pic {
             width: 40px;
@@ -457,6 +469,7 @@
             </div>
             <div class="chat-icon" id="nav-chat-trigger">
              <i class="fa-solid fa-comment-dots"></i>
+             <div class="noti-badge" id="chat-noti"></div>
             </div>
             <img src="{% static 'images/user.png'%}" class="user-pic" onclick="toggleMenu()">
             <div class="sub-menu-wrap" id="subMenu">
