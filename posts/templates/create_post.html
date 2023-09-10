@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% block title %} Lost Create Form || {{ block.super }} {% endblock %}
+
 {% block content %}
 <div style="background-image: url('{% static "images/report_bg.svg" %}'); background-size:cover; background-repeat:no-repeat; padding: 20px 0px 50px 0px;" >
        
@@ -51,16 +53,23 @@
               </div>
               <br>
 
+              <!-- show the uploaded image -->
+               {% if form.initial.fileUpload %}
+              <div style="margin-bottom: 10px;">   
+              <span style="font-size: 16px; color: #1F1342; ">Uploaded image :</span> <img src="{{ form.initial.fileUpload.url }}" alt="Image" style="height: 30px;">
+              </div>
+              {% endif %}
               <div class="file-loading">
               <div class="form-group">
               {{ form.fileUpload }}
               </div>
+              
               <div class="invalid-feedback mt-1 ">
                     Please upload an image.
               </div>
               </div>
               <br><br>
-
+              
               <a href="{% url 'Lost Post Overall' %}" style="margin-left: 360px;color: #1F1342;font-size: 22px; font-family: 'Bebas Neue';text-decoration: none;" >Cancel </a>
               &nbsp;&nbsp;&nbsp;  
               <button style="background-color: #1F1342;color: #ffffff;font-size: 22px;border-radius: 2rem;width:100px;height: 34px; font-family: 'Bebas Neue';" type="submit"  >Submit </button> 

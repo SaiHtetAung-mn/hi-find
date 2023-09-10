@@ -8,8 +8,6 @@ from django.contrib import messages
 def get_signup(request):
     if request.method == 'POST':
         form = CustomSignupForm(request.POST)
-        print(form)
-        print(form.is_valid())
         if form.is_valid():
             # Create a Users instance and save it
             user_profile = lostUser(

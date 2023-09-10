@@ -3,6 +3,8 @@
 {% load static %}
 {% load humanize %}
 {% load custom_filters %}
+
+{% block title %} Lost Post Overall || {{ block.super }} {% endblock %}
 {% block content %}
         <div id="search-container">
             <form action="{% url 'Lost Post Overall' %}" method="get">

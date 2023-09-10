@@ -81,3 +81,54 @@ def userPosts(request):
         context = {'current_user_posts': current_user_posts}
         return render(request, 'user_posts.html', context)
     return render(request,'user_posts.html')
+
+#For the deletion of post
+def delete_post(request, post_id):
+    post = get_object_or_404(lostItems,post_id=post_id)
+    
+    if request.method == "POST":
+        # Delete the post
+        post.delete()
+        messages.success(request, 'Post successfully deleted.')
+        return redirect('User Posts')  
+    context = {
+        'post': post
+    }
+    return render(request, 'user_posts.html', context)
+
+#For the post update
+
+def edit_post(request, post_id):
+    
+    post = get_object_or_404(lostItems, post_id=post_id)
+
+    if request.method == 'POST':
+        # Handle form submission (saving changes)
+        form = CustomLostPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Update the post object with the form data
+            post.postTitle = form.cleaned_data['postTitle']
+            post.lostItem = form.cleaned_data['lostItem']
+            post.location = form.cleaned_data['location']
+            post.description = form.cleaned_data['description']
+            post.fileUpload = form.cleaned_data['fileUpload']
+            post.save()
+
+            # Redirect to the post overall page
+            return redirect('Lost Post Overall')  
+    else:
+        # Display the edit form with the existing post data
+        initial_data = {
+            'postTitle': post.postTitle,
+            'lostItem': post.lostItem,
+            'location': post.location,
+            'description': post.description,
+            'fileUpload': post.fileUpload,  # If you want to include the existing file
+        }
+        print(initial_data['fileUpload'])
+        form = CustomLostPostForm(initial=initial_data)
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'create_post.html', context)
