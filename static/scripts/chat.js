@@ -60,7 +60,7 @@ export async function renderChatList() {
                 <div class="imgBox">
                     <img src="/static/images/user.jpg" class="cover" alt="">
                 </div>
-                <div class="details">
+                <div class="chat-list-details">
                     <div class="listHead">
                         <h4>${l.username}</h4>
                         <p class="time">${moment(l.updated_at).format("ddd, hA")}</p>

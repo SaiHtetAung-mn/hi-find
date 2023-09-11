@@ -72,35 +72,35 @@
     margin-right: 10px;
   }
   
-  .chatlist .block .details {
+  .chatlist .block .chat-list-details {
     position: relative;
     width: 100%;
   }
   
-  .chatlist .block .details .listHead {
+  .chatlist .block .chat-list-details .listHead {
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
   }
   
-  .chatlist .block .details .listHead h4 {
+  .chatlist .block .chat-list-details .listHead h4 {
     font-size: 1.1em;
     font-weight: 600;
     color: #fdf6f6;
   }
   
-  .chatlist .block .details .listHead .time {
+  .chatlist .block .chat-list-details .listHead .time {
     color: #f4efef;
   }
 
-  .details {
+  .chat-list-details {
     display: flex;
     flex-direction: column;
     gap: 5px;
     justify-content: center;
   }
   
-  .chatlist .block.unread .details .listHead .time {
+  .chatlist .block.unread .chat-list-details .listHead .time {
     color: #06d755;
   }
   
