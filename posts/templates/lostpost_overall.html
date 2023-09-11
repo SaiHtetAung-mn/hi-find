@@ -6,14 +6,10 @@
 
 {% block title %} Lost Post Overall || {{ block.super }} {% endblock %}
 {% block content %}
-        
-        <div id="search-container">
-            <form action="{% url 'Lost Post Overall' %}" method="get">
-            <input type="text" id="search-bar" name="q" placeholder="Type item keyword...">
-           
-            <button type="submit" id="search-icon"><img src="{% static 'images/search.png'%}" alt="Search"></button>
-            
-            
+        <div style="width: 100%; display: flex; justify-content: center">
+            <form action="{% url 'Lost Post Overall' %}" method="get" id="search-container">
+                <input type="text" id="search-bar" name="q" placeholder="Type item keyword...">
+                <button type="submit" id="search-icon"><img src="{% static 'images/search.png'%}" alt="Search"></button>
             </form>
         </div>
       
