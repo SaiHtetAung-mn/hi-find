@@ -31,7 +31,8 @@ def createPost(request):
 
             )
             
-            new_post.save()            
+            new_post.save()
+            messages.success(request, 'Post Successfully Created!')            
             return redirect('Lost Post Overall') 
         else:
             print('Not valid.')
@@ -89,7 +90,7 @@ def delete_post(request, post_id):
     if request.method == "POST":
         # Delete the post
         post.delete()
-        messages.success(request, 'Post successfully deleted.')
+        messages.success(request, 'Post Successfully Deleted!')
         return redirect('User Posts')  
     context = {
         'post': post
@@ -114,6 +115,7 @@ def edit_post(request, post_id):
             post.fileUpload = form.cleaned_data['fileUpload']
             post.save()
 
+            messages.success(request, 'Post Successfully Updated!')
             # Redirect to the post overall page
             return redirect('Lost Post Overall')  
     else:

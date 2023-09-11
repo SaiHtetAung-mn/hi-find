@@ -18,7 +18,7 @@ class CustomLostPostForm(forms.Form):
     )
 
     description = forms.CharField(
-        max_length=300,
+        max_length=1500,
         widget=forms.Textarea(attrs={'class': 'form-control', 'id': 'description', 'rows': '3','style':'resize: none;height: 100px;'})
     )
     

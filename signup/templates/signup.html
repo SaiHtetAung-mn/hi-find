@@ -113,23 +113,15 @@
         a:hover {
             text-decoration: underline;
         }
+        
 
     </style>
 </head>
 <body>
-  
+
+
     <a href="{% url 'index' %}"><button class="back-button">Back</button></a>
         <div class="signup-container">
-            
-            {% if messages %}
-                     <div class="messages">
-                        {% for message in messages %}
-                        <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">X</span></button>
-                        </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
         <div class="signup-title">Create an Account</div>
         <form method="post">
         {% csrf_token %}

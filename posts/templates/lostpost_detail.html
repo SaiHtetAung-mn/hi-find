@@ -24,7 +24,16 @@
     </div>
     <div>
     <!-- for user name -->
-    <img src="{% static 'images/user.png'%}" width="26" height="26" style="border-radius: 30px;">&nbsp;&nbsp;<span style="font-family: 'Bebas Neue';font-size: 18px;margin-top: 5px;color:#1F1342;" id="username">{{current_post.user.username}}</span>
+    {% if current_post.user.gender == 'M' %}
+    <img src="{% static 'images/boy.svg'%}" width="26" height="26" style="border-radius: 30px;">     
+    {%endif%}
+   
+    {% if current_post.user.gender == 'F' %}
+    <img src="{% static 'images/girl.svg'%}" width="26" height="26" style="border-radius: 30px;">     
+    {%endif%}
+
+    &nbsp;&nbsp;<span style="font-family: 'Bebas Neue';font-size: 18px;margin-top: 5px;color:#1F1342;" id="username">{{current_post.user.username}}</span> 
+    
     <!-- for post created time -->
     <span class="text-muted" style="margin-left: 30px;" id="time">{{ current_post.timestamp | custom_naturaltime }}</span>
      </div>   

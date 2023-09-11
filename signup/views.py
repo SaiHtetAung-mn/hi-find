@@ -18,9 +18,8 @@ def get_signup(request):
             )
             
             user_profile.save()
-            messages.add_message(request, messages.SUCCESS, 'Registration successfully complete')
-            #Redierct to lost post overall page if successful
-            return redirect('Lost Post Overall') 
+            messages.add_message(request, messages.SUCCESS, 'Your Regiration is Successful! Please login to get started.')
+            return redirect('login')
     else:
         form = CustomSignupForm()
     return render(request, 'signup.html', {'form': form})

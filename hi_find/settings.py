@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 #for time format
 from django.contrib.humanize.templatetags import humanize
+from django.contrib.messages import constants as messages
 
 from pathlib import Path
 import os
@@ -181,3 +182,11 @@ LOGGING = {
         },
     },
     }
+
+MESSAGE_TAGS = {
+    messages.INFO: 'alert alert-info',
+    messages.SUCCESS: 'alert alert-success',
+    messages.WARNING: 'alert alert-warning',
+    messages.ERROR: 'alert alert-danger',
+    messages.DEBUG: 'alert alert-info',
+}

@@ -6,6 +6,7 @@
 
 {% block title %} Lost Post Overall || {{ block.super }} {% endblock %}
 {% block content %}
+        
         <div id="search-container">
             <form action="{% url 'Lost Post Overall' %}" method="get">
             <input type="text" id="search-bar" name="q" placeholder="Type item keyword...">
@@ -21,7 +22,14 @@
         {% for lost_item in lost_items %}
         <div class="profile-card">
             <div class="profile-details">
-                <img src="{% static 'images/user.png'%}" alt="User Profile Photo" class="profile-photo">
+                {% if lost_item.user.gender == 'M' %}
+                <img src="{% static 'images/boy.svg'%}" alt="User Profile Photo" class="profile-photo">       
+                {%endif%}
+                
+                {% if lost_item.user.gender == 'F' %}
+                <img src="{% static 'images/girl.svg'%}" alt="User Profile Photo" class="profile-photo">       
+                {%endif%}
+
                 <div class="profile-name">{{ lost_item.user.username }}</div>
                 <div class="profile-time">{{ lost_item.timestamp|custom_naturaltime }}</div>
             </div>
